@@ -1,3 +1,13 @@
+<p align="center">
+  <img src="assets/extension_icon.png" width="128" height="128" alt="Screen Mirror Extension Icon" />
+</p>
+
+<h1 align="center">Niri Monitors</h1>
+
+<p align="center">
+  <b>A Vicinae extension to manage connected displays on the Niri Wayland compositor.</b>
+</p>
+
 ## Overview
 
 Manage your connected displays without leaving the launcher. Turn monitors on or off, switch resolutions, adjust scale, and rotate a display — all from a single command, built for Vicinae for Niri window manager.
