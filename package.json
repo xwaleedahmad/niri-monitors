@@ -5,6 +5,7 @@
   "description": "Manage connected monitors, scales, rotation, power states for Niri Wayland compositor",
   "categories": [],
   "license": "MIT",
+  "version": "1.1.0",
   "author": "xwaleedahmad",
   "contributors": [],
   "pastContributors": [],
@@ -28,7 +29,8 @@
     "@vicinae/api": "^0.24.0"
   },
   "devDependencies": {
-    "typescript": "^5.9.2",
-    "@biomejs/biome": "2.3.2"
+    "@biomejs/biome": "2.3.2",
+    "@types/node": "^26.2.0",
+    "typescript": "^5.9.2"
   }
 }
