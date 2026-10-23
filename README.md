@@ -19,8 +19,7 @@ A Vicinae extension for managing connected displays on the Niri Wayland composit
 - **Global controls** — power off all monitors at once.
 
 ## Quick Demo
-
-https://github.com/user-attachments/assets/6302b70b-04a1-49bf-ba45-bd890d7d7122
+https://github.com/user-attachments/assets/144bfec3-3b7f-4228-88cf-78cff7b466b8
 
 ## Usage
 
