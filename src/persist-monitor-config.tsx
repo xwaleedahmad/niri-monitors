@@ -42,6 +42,12 @@ export default function PersistMonitorConfig({
 	const canToggle = !isEnabled || enabledCount > 1;
 
 	const currentScale = monitor.logical?.scale ?? 1.0;
+	// Keep the monitor's actual scale selectable even when it is not one of the
+	// common presets (for example 1.2), otherwise the dropdown has no matching
+	// item and the current value is not shown.
+	const scaleOptions = COMMON_SCALES.includes(currentScale)
+		? COMMON_SCALES
+		: [...COMMON_SCALES, currentScale].sort((a, b) => a - b);
 	const currentTransform = normalizeTransform(
 		monitor.logical?.transform ?? "normal",
 	);
@@ -207,11 +213,11 @@ export default function PersistMonitorConfig({
 						setPositions(null);
 					}}
 				>
-					{COMMON_SCALES.map((scale, index) => (
+					{scaleOptions.map((scaleOption, index) => (
 						<Form.Dropdown.Item
 							key={index}
-							value={scale.toString()}
-							title={`${scale}x`}
+							value={scaleOption.toString()}
+							title={`${scaleOption}x`}
 						/>
 					))}
 				</Form.Dropdown>

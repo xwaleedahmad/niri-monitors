@@ -14,13 +14,6 @@ import type { OutputConfigUpdate } from "./types";
 const HEADER_COMMENT =
 	"// This file is generated and managed by the Vicinae Niri Monitors extension.\n\n";
 
-export async function upsertOutputConfig(
-	outputName: string,
-	update: OutputConfigUpdate,
-): Promise<boolean> {
-	return upsertOutputConfigs({ [outputName]: update });
-}
-
 /** Write a complete layout together, rather than exposing intermediate files
  * to Niri's config watcher for each individual monitor. */
 export async function upsertOutputConfigs(

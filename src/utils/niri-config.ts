@@ -105,10 +105,6 @@ export function getMonitorsConfigTarget(config: string): MonitorsConfigTarget {
 	};
 }
 
-export function getMonitorsConfigPath(config = ""): string {
-	return getMonitorsConfigTarget(config).configPath;
-}
-
 export function escapeRegExp(value: string): string {
 	return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
@@ -268,13 +264,6 @@ export function ensureActiveInclude(
 	const newConfig =
 		config.length > 0 ? `${includeLine}\n${config}` : includeLine;
 	return { config: newConfig, modified: true };
-}
-
-export function formatNewOutputBlock(
-	outputName: string,
-	update: OutputConfigUpdate,
-): string {
-	return `output ${JSON.stringify(outputName)} {${updateOutputBody("\n", update)}}\n`;
 }
 
 export function updateOutputBody(

@@ -51,7 +51,7 @@ export default function ManageMonitors() {
 		currentlyEnabled: boolean,
 	) => {
 		const action = currentlyEnabled ? "off" : "on";
-		const success = await runNiriCommand(`output ${outputName} ${action}`);
+		const success = await runNiriCommand("output", outputName, action);
 		if (success) {
 			showSuccess(`Monitor ${outputName} turned ${action}`);
 			await loadOutputs();
@@ -59,7 +59,12 @@ export default function ManageMonitors() {
 	};
 
 	const handleSetScale = async (outputName: string, scale: number) => {
-		const success = await runNiriCommand(`output ${outputName} scale ${scale}`);
+		const success = await runNiriCommand(
+			"output",
+			outputName,
+			"scale",
+			String(scale),
+		);
 		if (success) {
 			showSuccess(`Scale for ${outputName} set to ${scale}x`);
 			await loadOutputs();
@@ -68,7 +73,10 @@ export default function ManageMonitors() {
 
 	const handleSetTransform = async (outputName: string, transform: string) => {
 		const success = await runNiriCommand(
-			`output ${outputName} transform ${transform}`,
+			"output",
+			outputName,
+			"transform",
+			transform,
 		);
 		if (success) {
 			showSuccess(`Rotation for ${outputName} updated`);
@@ -81,7 +89,10 @@ export default function ManageMonitors() {
 		resolution: string,
 	) => {
 		const success = await runNiriCommand(
-			`output ${outputName} mode ${resolution}`,
+			"output",
+			outputName,
+			"mode",
+			resolution,
 		);
 		if (success) {
 			showSuccess(`Resolution for ${outputName} updated`);
@@ -105,7 +116,13 @@ export default function ManageMonitors() {
 			isLoading={loading}
 			searchBarPlaceholder="Search connected monitors..."
 		>
-			{outputList.length === 0 || loading ? (
+			{loading ? (
+				<List.EmptyView
+					icon={Icon.Monitor}
+					title="Loading Monitors…"
+					description="Reading connected Niri outputs."
+				/>
+			) : outputList.length === 0 ? (
 				<List.EmptyView
 					icon={Icon.Monitor}
 					title="No Monitors Found"

@@ -1,22 +1,22 @@
 import { showToast, Toast } from "@vicinae/api";
-import { exec } from "child_process";
+import { execFile } from "child_process";
 import { promisify } from "util";
-import { Output } from "../types";
+import type { Output } from "../types";
 
-export const execAsync = promisify(exec);
+const execFileAsync = promisify(execFile);
 
 export async function isNiriRunning(): Promise<boolean> {
 	try {
-		await execAsync("niri msg version");
+		await execFileAsync("niri", ["msg", "version"]);
 		return true;
 	} catch {
 		return false;
 	}
 }
 
-export async function runNiriCommand(command: string): Promise<boolean> {
+export async function runNiriCommand(...args: string[]): Promise<boolean> {
 	try {
-		await execAsync(`niri msg ${command}`);
+		await execFileAsync("niri", ["msg", ...args]);
 		return true;
 	} catch (error) {
 		handleError("Command failed", error);
@@ -26,17 +26,21 @@ export async function runNiriCommand(command: string): Promise<boolean> {
 
 export async function fetchNiriOutputs(): Promise<Record<string, Output>> {
 	try {
-		const { stdout } = await execAsync(`niri msg --json outputs`);
+		const { stdout } = await execFileAsync("niri", [
+			"msg",
+			"--json",
+			"outputs",
+		]);
 		return JSON.parse(stdout);
 	} catch (error) {
-		handleError("Failed to fetch  niri ouptuts:", error);
+		handleError("Failed to fetch niri outputs:", error);
 		return {};
 	}
 }
 
-export async function runNiriAction(action: string): Promise<boolean> {
+export async function runNiriAction(...args: string[]): Promise<boolean> {
 	try {
-		await execAsync(`niri msg action ${action}`);
+		await execFileAsync("niri", ["msg", "action", ...args]);
 		return true;
 	} catch (error) {
 		handleError("Action failed", error);
