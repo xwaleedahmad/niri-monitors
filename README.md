@@ -20,10 +20,12 @@ Manage your connected displays without leaving the launcher. Turn monitors on or
 - Turn any monitor on or off
 - Power off every monitor at once
 - Adjust display scale, resolution and rotation
+- Change monitor positions by arranging displays on a visual canvas
 - Dedicated shortcuts for every single action
 - Copy a monitor's name, model, or resolution to the clipboard
 
 ## Quick Demo
+
 https://github.com/user-attachments/assets/6302b70b-04a1-49bf-ba45-bd890d7d7122
 
 ## Usage
@@ -42,6 +44,7 @@ Runtime-only changes that apply instantly via `niri msg` and reset the next time
 | ------------------------ | ----------------- |
 | Enable / disable monitor | `Cmd + D`         |
 | Set scale                | `Cmd + S`         |
+| Set position             | `Cmd + P`         |
 | Rotate display           | `Cmd + R`         |
 | Set resolution           | `Shift + R`       |
 | Refresh list             | `Cmd + Shift + R` |
